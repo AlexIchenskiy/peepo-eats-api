@@ -53,9 +53,38 @@ public class UserControllerTests {
     }
 
     // returns HTTP status 400 BAD REQUEST along with throwing MethodArgumentNotValidException
+    // testing password validation
     @Test
-    public void test_register_throwsMethodArgumentNotValidException() throws Exception {
+    public void test_register_throwsMethodArgumentNotValidException_byPassword() throws Exception {
         userRegistrationRequest.setPassword("password");
+
+        mockMvc.perform(post("/user/register")
+                        .content(mapper.writeValueAsString(userRegistrationRequest))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof
+                        MethodArgumentNotValidException));
+    }
+
+    // returns HTTP status 400 BAD REQUEST along with throwing MethodArgumentNotValidException
+    // testing length validation
+    @Test
+    public void test_register_throwsMethodArgumentNotValidException_byUsername() throws Exception {
+        userRegistrationRequest.setUsername("a");
+
+        mockMvc.perform(post("/user/register")
+                        .content(mapper.writeValueAsString(userRegistrationRequest))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(result -> assertTrue(result.getResolvedException() instanceof
+                        MethodArgumentNotValidException));
+    }
+
+    // returns HTTP status 400 BAD REQUEST along with throwing MethodArgumentNotValidException
+    // testing email validation
+    @Test
+    public void test_register_throwsMethodArgumentNotValidException_byEmail() throws Exception {
+        userRegistrationRequest.setEmail("aetmaildotcom");
 
         mockMvc.perform(post("/user/register")
                         .content(mapper.writeValueAsString(userRegistrationRequest))
@@ -78,6 +107,15 @@ public class UserControllerTests {
                 .andExpect(status().isConflict())
                 .andExpect(result -> assertTrue(result.getResolvedException() instanceof
                         UserAlreadyExistsException));
+    }
+
+    // returns HTTP status 401 UNAUTHORIZED
+    @Test
+    public void test_register_returnsUnauthorized() throws Exception {
+        mockMvc.perform(post("/user/dontregister")
+                        .content(mapper.writeValueAsString(userRegistrationRequest))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isUnauthorized());
     }
 
 }
