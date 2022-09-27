@@ -2,9 +2,9 @@
 ![spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
 ![mysql](https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white)</br>
 
-![license](https://img.shields.io/github/license/alexichenskiy/peepo-eats-api.svg)
-![open issues](https://img.shields.io/github/issues/alexichenskiy/peepo-eats-api.svg)
-![closed issues](https://img.shields.io/github/issues-closed/alexichenskiy/peepo-eats-api.svg)
+![license](https://img.shields.io/github/license/AlexIchenskiy/peepo-eats-api.svg)
+![open issues](https://img.shields.io/github/issues/AlexIchenskiy/peepo-eats-api.svg)
+![closed issues](https://img.shields.io/github/issues-closed/AlexIchenskiy/peepo-eats-api.svg)
 # Peepo Eats API
 peepo-eats-api is a Spring Boot API made for a fictitious Peepo Eats food delivery service.
 
