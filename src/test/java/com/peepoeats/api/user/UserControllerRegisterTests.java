@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class UserControllerTests {
+public class UserControllerRegisterTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,10 +33,10 @@ public class UserControllerTests {
     private void setup() {
         userRegistrationRequest = UserRegistrationRequestDTO.builder()
                 .firstname("Alex")
-                .lastname("Ichenskyi")
-                .email("aichenskyi@gmail.com")
-                .username("aichenskyi")
-                .password("password1")
+                .lastname("Ichenskiy")
+                .email("aichenskiy@gmail.com")
+                .username("aichenskiy")
+                .password("password2")
                 .role(UserRole.USER)
                 .address("Peepo Square")
                 .termsaccepted(true)

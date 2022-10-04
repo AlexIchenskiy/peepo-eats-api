@@ -1,6 +1,7 @@
 package com.peepoeats.api.user;
 
 import com.peepoeats.api.JWT.JwtResponse;
+import com.peepoeats.api.user.DTO.UserLoginRequestDTO;
 import com.peepoeats.api.user.DTO.UserRegistrationRequestDTO;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class UserController {
     public ResponseEntity<JwtResponse> register(@RequestBody @Valid UserRegistrationRequestDTO userDetails)
             throws Exception {
         return new ResponseEntity<>(userService.register(userDetails), HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public ResponseEntity<JwtResponse> login(@RequestBody @Valid UserLoginRequestDTO userDetails)
+            throws Exception {
+        return new ResponseEntity<>(userService.login(userDetails), HttpStatus.ACCEPTED);
     }
 
 }

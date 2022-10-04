@@ -3,6 +3,7 @@ package com.peepoeats.api.exception;
 import com.peepoeats.api.JWT.exception.ExpiredJwtException;
 import com.peepoeats.api.JWT.exception.InvalidJwtException;
 import com.peepoeats.api.user.exception.UserAlreadyExistsException;
+import com.peepoeats.api.user.exception.UserBadCredentialsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -75,6 +76,19 @@ public class ExceptionController {
         ExceptionDetailedResponse error = new ExceptionDetailedResponse("Invalid JWT token", details);
 
         return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(UserBadCredentialsException.class)
+    public final ResponseEntity<ExceptionDetailedResponse> handleUserBadCredentialsException(
+            UserBadCredentialsException e) {
+        List<String> details = new ArrayList<>();
+
+        details.add(e.getLocalizedMessage());
+
+        ExceptionDetailedResponse error = new ExceptionDetailedResponse(
+                "Login or password is invalid", details);
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
 }

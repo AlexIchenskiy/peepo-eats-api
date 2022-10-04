@@ -1,6 +1,7 @@
 package com.peepoeats.api.user;
 
 import com.peepoeats.api.JWT.JwtResponse;
+import com.peepoeats.api.user.DTO.UserLoginRequestDTO;
 import com.peepoeats.api.user.DTO.UserRegistrationRequestDTO;
 
 public interface UserService {
@@ -10,5 +11,6 @@ public interface UserService {
     User findByUsername(String username);
 
     JwtResponse register(UserRegistrationRequestDTO user) throws Exception;
+    JwtResponse login(UserLoginRequestDTO user) throws Exception;
 
 }
