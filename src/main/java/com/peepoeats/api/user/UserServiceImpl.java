@@ -57,6 +57,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public JwtResponse login(UserLoginRequestDTO userDetails) throws Exception {
         User user = userRepository.findByEmail(userDetails.getEmail());
+        if (user == null) {
+            throw new UserBadCredentialsException(userDetails.getEmail());
+        }
         authenticate(user.getUsername(), userDetails.getPassword(), user.getAuthorities());
 
         return new JwtResponse(jwtTokenUtil.generateToken(user));
