@@ -14,8 +14,12 @@ peepo-eats-api is a Spring Boot API made for a fictitious Peepo Eats food delive
 - MySQL
 
 ## Installation
-```github
+```bash
 git clone https://github.com/AlexIchenskiy/peepo-eats-api.git
+
+cd peepo-eats-api
+
+mvn spring-boot:run
 ```
 
 ## Contribution
